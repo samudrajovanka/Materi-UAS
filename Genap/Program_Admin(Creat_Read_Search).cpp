@@ -27,26 +27,26 @@ void DetailNilai();
 
 int main() {
 	Menu:
-		char pilihan = GetOption();
-		switch(pilihan) {
-			case '1':
-				InputBio();
-				goto Menu;
-			case '2':
-				ReadBio();
-				goto Menu;
-			case '3':
-				DetailNilai();
-				goto Menu;
-			case '4':
-				system("cls");
-				cout << "Bye....";
-				Sleep(2000);
-				break;
-			default:
-				cout << "Data yang anda masukin salah, silakan ulangi"; getch();
-				goto Menu;
-		}
+	char pilihan = GetOption();
+	switch(pilihan) {
+		case '1':
+			InputBio();
+			goto Menu;
+		case '2':
+			ReadBio();
+			goto Menu;
+		case '3':
+			DetailNilai();
+			goto Menu;
+		case '4':
+			system("cls");
+			cout << "Bye....";
+			Sleep(2000);
+			break;
+		default:
+			cout << "Data yang anda masukin salah, silakan ulangi"; getch();
+			goto Menu;
+	}
 
  	return 0;
 }
@@ -62,18 +62,17 @@ string CetakGaris(int banyak) {
 char GetOption() {
 	char pilihan;
 	
-	menu:
-		system("cls");
-		cout << CetakGaris(20) << endl;
-		cout << "\tMENU" << endl;
-		cout << CetakGaris(20) << endl;
-		cout << "1. Input Biodata" << endl;
-		cout << "2. Lihat Nilai" << endl;
-		cout << "3. Detail Nilai" << endl;
-		cout << "4. Exit" << endl;
-		cout << CetakGaris(20) << endl;
-		cout << "Masukan pilihan [1..4]: ";
-		cin >> pilihan;
+	system("cls");
+	cout << CetakGaris(20) << endl;
+	cout << "\tMENU" << endl;
+	cout << CetakGaris(20) << endl;
+	cout << "1. Input Biodata" << endl;
+	cout << "2. Lihat Nilai" << endl;
+	cout << "3. Detail Nilai" << endl;
+	cout << "4. Exit" << endl;
+	cout << CetakGaris(20) << endl;
+	cout << "Masukan pilihan [1..4]: ";
+	cin >> pilihan;
 	return pilihan;
 }
 
@@ -97,76 +96,76 @@ void InputBio() {
 	
 	do {
 		Input:
-			ofstream fileOut("data.bin", ios::app | ios::binary);
-			int tugasKe = 0;
-			system("cls");
-			cout << CetakGaris(26) << endl;
-			cout << "\tInput Data" << endl;
-			cout << CetakGaris(26) << endl << endl;
-			cout << "Masukan NIM \t\t: "; cin >> mhs.NIM; cin.ignore();
-			cout << "Masukan nama \t\t: "; gets(mhs.nama);
-			cout << "Masukan mata kuliah \t: "; gets(mhs.mataKuliah);
-			cout << "Masukan SKS \t\t: "; cin >> mhs.sks;
-			Absen:
-				cout << "Masukan jumlah absen[0..14] : "; cin >> mhs.absen;
-				if(mhs.absen >= 0 && mhs.absen <= 11) {
-					do {
-						cout << "nilai absen yang dimasukan tidak memenuhi kriteria, data yang anda masukan sudah benar? [y/n] ";
-						cin >> tombol;
-						if(tombol == 'n' || tombol == 'N') {
-							goto Input;
-						} else if(tombol == 'y' || tombol == 'Y') {
-							mhs.uas = 0;
-							mhs.uts = 0;
-						}
-					} while(!(tombol == 'n' || tombol == 'N'));	
-				} else if(mhs.absen > 11 && mhs.absen <= 14) {
-					cout << "Masukan nilai tugas";
-					do {
-						cout << "\nmasukan nilai tugas " << tugasKe+1 << "\t: ";
-						cin >> mhs.tugas[tugasKe];
-						if(tugasKe == 2) {
-							break;
-						}
-						cout << "   Ada nilai tugas lagi? [tekan X bila tidak ada tugas lagi]";
-						tombol = getch();
-						tugasKe++;
-						if(tombol == 'x' || tombol == 'X') {
-							if(tugasKe == 1) {
-								mhs.tugas[tugasKe] = 0;
-								mhs.tugas[tugasKe+1] = 0;
-							} else {
-								mhs.tugas[tugasKe] = 0;
-							}
-							cout << endl;
-							break;
-						}
-					} while(!(tombol == 'x' || tombol == 'X'));
-					cout << "Masukan UTS \t\t: "; cin >> mhs.uts;
-					cout << "Masukan UAS \t\t: "; cin >> mhs.uas;
-					Check_Data:
-						cout << "Data yang dimasukan sudah benar ?[y/n] "; cin >> tombol;
-						if(tombol == 'n' || tombol == 'N') {
-							goto Input;
-						} else if(!(tombol == 'y' || tombol == 'Y')){
-							goto Check_Data;
-						}
-						mhs.rataTugas = RataTugas(mhs.tugas[0], mhs.tugas[1], mhs.tugas[2]);
-						mhs.akhir = NilaiAkhir(mhs.absen, mhs.rataTugas, mhs.uts, mhs.uas);
-						mhs.huruf = KonversiHuruf(mhs.akhir);
-						fileOut.write((char*)&mhs, sizeof(mhs));
-				} else {
-					cout << "Anda memasuki di luar batas, silakan ulangi"; getch();
-					cout << endl;
-					goto Absen;
+		ofstream fileOut("data.bin", ios::app | ios::binary);
+		int tugasKe = 0;
+		system("cls");
+		cout << CetakGaris(26) << endl;
+		cout << "\tInput Data" << endl;
+		cout << CetakGaris(26) << endl << endl;
+		cout << "Masukan NIM \t\t: "; cin >> mhs.NIM; cin.ignore();
+		cout << "Masukan nama \t\t: "; gets(mhs.nama);
+		cout << "Masukan mata kuliah \t: "; gets(mhs.mataKuliah);
+		cout << "Masukan SKS \t\t: "; cin >> mhs.sks;
+	
+		Absen:
+		cout << "Masukan jumlah absen[0..14] : "; cin >> mhs.absen;
+		if(mhs.absen >= 0 && mhs.absen <= 11) {
+			do {
+				cout << "nilai absen yang dimasukan tidak memenuhi kriteria, data yang anda masukan sudah benar? [y/n] ";
+				cin >> tombol;
+				if(tombol == 'n' || tombol == 'N') {
+					goto Input;
+				} else if(tombol == 'y' || tombol == 'Y') {
+					mhs.uas = 0;
+					mhs.uts = 0;
 				}
-				do {
-					cout << "Ada data lagi [y/n] "; cin >> tombol;
-					if(tombol == 'y' || tombol == 'Y') {
-						break;
+			} while(!(tombol == 'n' || tombol == 'N'));	
+		} else if(mhs.absen > 11 && mhs.absen <= 14) {
+			cout << "Masukan nilai tugas";
+			do {
+				cout << "\nmasukan nilai tugas " << tugasKe+1 << "\t: ";
+				cin >> mhs.tugas[tugasKe];
+				if(tugasKe == 2) break;
+				cout << "   Ada nilai tugas lagi? [tekan X bila tidak ada tugas lagi]";
+				tombol = getch();
+				tugasKe++;
+				if(tombol == 'x' || tombol == 'X') {
+					if(tugasKe == 1) {
+						mhs.tugas[tugasKe] = 0;
+						mhs.tugas[tugasKe+1] = 0;
+					} else {
+						mhs.tugas[tugasKe] = 0;
 					}
-				} while(!(tombol == 'n' || tombol == 'N'));
-				fileOut.close();
+					cout << endl;
+					break;
+				}
+			} while(!(tombol == 'x' || tombol == 'X'));
+			cout << "Masukan UTS \t\t: "; cin >> mhs.uts;
+			cout << "Masukan UAS \t\t: "; cin >> mhs.uas;
+			
+			Check_Data:
+			cout << "Data yang dimasukan sudah benar ?[y/n] "; cin >> tombol;
+			if(tombol == 'n' || tombol == 'N') {
+				goto Input;
+			} else if(!(tombol == 'y' || tombol == 'Y')){
+				goto Check_Data;
+			}
+			mhs.rataTugas = RataTugas(mhs.tugas[0], mhs.tugas[1], mhs.tugas[2]);
+			mhs.akhir = NilaiAkhir(mhs.absen, mhs.rataTugas, mhs.uts, mhs.uas);
+			mhs.huruf = KonversiHuruf(mhs.akhir);
+			fileOut.write((char*)&mhs, sizeof(mhs));
+		} else {
+			cout << "Anda memasuki di luar batas, silakan ulangi"; getch();
+			cout << endl;
+			goto Absen;
+		}
+		
+		do {
+			cout << "Ada data lagi [y/n] "; cin >> tombol;
+			if(tombol == 'y' || tombol == 'Y') break;
+		} while(!(tombol == 'n' || tombol == 'N'));
+		
+		fileOut.close();
 	} while(tombol == 'y' || tombol == 'Y');
 }
 
@@ -183,12 +182,12 @@ void ReadBio() {
 	if(!fileIn | mhs.NIM == 0) {
 		cout << "Tidak ada data"; getch();
 	} else {
-		cout << CetakGaris(99) << endl;
+		cout << CetakGaris(97) << endl;
 		cout << setiosflags(ios::left) << setw(13) << "| NIM "
-		 	<< setw(28) << "| Nama " << setw(33) << "| Mata Kuliah "
-		 	<< setw(3) << "| SKS " << setw(10) << "| Akhir "
-		 	<< setw(5) << "| Huruf |" << endl;
-		cout << CetakGaris(99) << endl;
+		 	 << setw(28) << "| Nama " << setw(33) << "| Mata Kuliah "
+		 	 << setw(3) << "| SKS " << setw(8) << "| Akhir "
+		 	 << setw(5) << "| Huruf |" << endl;
+		cout << CetakGaris(97) << endl;
 		while(!fileIn.eof()) {
 			cout << "| " << mhs.NIM << " | ";
 			if(strlen(mhs.nama) > 25) {
@@ -199,10 +198,10 @@ void ReadBio() {
 				cout << setw(25) << mhs.nama;
 			}
 			cout << " | " << setw(30) << mhs.mataKuliah << " | " << setw(3) << mhs.sks << " | "
-		 		 << setw(7) << mhs.akhir << " | " << setw(5) << mhs.huruf << " |" << endl;
+		 		 << setw(5) << setprecision(4) << mhs.akhir << " | " << setw(5) << mhs.huruf << " |" << endl;
 			fileIn.read((char*)&mhs, sizeof(mhs));
 		}
-		cout << CetakGaris(99) << endl;
+		cout << CetakGaris(97) << endl;
 		cout << "Data diatas di cetak pada " << CetakWaktu(); getch();
 	}
 	fileIn.close();
