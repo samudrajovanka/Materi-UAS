@@ -118,8 +118,11 @@ void InputBio() {
 				} else if(tombol == 'y' || tombol == 'Y') {
 					mhs.uas = 0;
 					mhs.uts = 0;
+					for(int i = 0; i < 3; i++) {
+						mhs.tugas[i] = 0;
+					}
 				}
-			} while(!(tombol == 'n' || tombol == 'N'));	
+			} while(!(tombol == 'y' || tombol == 'Y'));	
 		} else if(mhs.absen > 11 && mhs.absen <= 14) {
 			cout << "Masukan nilai tugas";
 			do {
@@ -150,16 +153,16 @@ void InputBio() {
 			} else if(!(tombol == 'y' || tombol == 'Y')){
 				goto Check_Data;
 			}
-			mhs.rataTugas = RataTugas(mhs.tugas[0], mhs.tugas[1], mhs.tugas[2]);
-			mhs.akhir = NilaiAkhir(mhs.absen, mhs.rataTugas, mhs.uts, mhs.uas);
-			mhs.huruf = KonversiHuruf(mhs.akhir);
-			fileOut.write((char*)&mhs, sizeof(mhs));
 		} else {
 			cout << "Anda memasuki di luar batas, silakan ulangi"; getch();
 			cout << endl;
 			goto Absen;
 		}
 		
+		mhs.rataTugas = RataTugas(mhs.tugas[0], mhs.tugas[1], mhs.tugas[2]);
+		mhs.akhir = NilaiAkhir(mhs.absen, mhs.rataTugas, mhs.uts, mhs.uas);
+		mhs.huruf = KonversiHuruf(mhs.akhir);
+		fileOut.write((char*)&mhs, sizeof(mhs));
 		do {
 			cout << "Ada data lagi [y/n] "; cin >> tombol;
 			if(tombol == 'y' || tombol == 'Y') break;
