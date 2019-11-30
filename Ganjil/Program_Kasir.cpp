@@ -173,7 +173,7 @@ void InputBelanja() {
 		} while(!((member == 0) || (member == 1)));
 		
 		if(member == 1) {
-			diskMem += 1;
+			diskMem = 1;
 		}
 
 		Input:
