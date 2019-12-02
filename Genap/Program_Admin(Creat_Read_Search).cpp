@@ -11,7 +11,7 @@ using namespace std;
 struct Data {
 	char NIM[11], nama[100], mataKuliah[50], huruf;
 	int sks, absen;
-	float tugas[3] = {0, 0, 0};
+	float tugas[3];
 	float uts, uas, akhir, rataTugas;
 }mhs;
 
