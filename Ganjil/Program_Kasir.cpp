@@ -111,11 +111,11 @@ int Total(int harga, int jumlah, int diskon) {
 void RincianBelanja(int indeks) {
 	pembeli.totalBel = 0;
 	
-	cout << CetakGaris(62) << endl;
+	cout << CetakGaris(65) << endl;
 	cout << setiosflags(ios::left) << setw(6) << "| No" << setw(23) << "| Nama Barang "
 		 << setw(8) << "| Banyaknya " << setw(9) << "| Diskon "
-		 << setw(11) << "| total " << "|" << endl;
-	cout << CetakGaris(62) << endl;
+		 << setw(14) << "| total " << "|" << endl;
+	cout << CetakGaris(65) << endl;
 	
 	for(int i = 0; i <= indeks; i++) {
 		cout << "| " << setw(3) << i+1 << " | " << setw(20) << barang[i].nama << " | "
@@ -125,10 +125,10 @@ void RincianBelanja(int indeks) {
 		} else{
 			cout << setw(4) << "%";
 		}
-		cout  << " | " << setw(8) << barang[i].total <<" |" << endl;
+		cout  << " | Rp. " << setw(7) << barang[i].total <<" |" << endl;
 		pembeli.totalBel += barang[i].total;
 	}
-	cout << CetakGaris(62) << endl;
+	cout << CetakGaris(65) << endl;
 	cout << "\t\t\tTotal: Rp. " << pembeli.totalBel;
 }
 
