@@ -234,7 +234,7 @@ void InputBelanja() {
 			cout << "Data yang dimasukan benar? [y/n] : ";
 			cin >> tombol;
 			if(tombol == 'y' || tombol == 'Y') {
-				if(barang[indeksBarang].jumlah >= barang[indeksBarang].minBel) {
+				if(belanja[indeksBelanja].jumlah >= barang[indeksBarang].minBel) {
 					belanja[indeksBelanja].diskon += diskMem;
 				} else {
 					belanja[indeksBelanja].diskon = diskMem;
