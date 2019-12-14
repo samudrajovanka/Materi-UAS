@@ -1,5 +1,0 @@
-P01	10000	Pulpen		10	10
-P02	3000	Pensil		5	5
-P03	2000	Penghapus	10	10
-P04 5000	Penggaris	10	5
-P05	6000	Rautan		0	0
