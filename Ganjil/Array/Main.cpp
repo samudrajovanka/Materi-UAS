@@ -60,9 +60,7 @@ int main() {
 	barang[4].diskon = 0;
 	barang[4].minBel = 0;
 
-	
 	Menu:
-	barang[0].kode = "P01";
 	char pilihan = GetOption();
 	switch(pilihan) {
 		case '1':
