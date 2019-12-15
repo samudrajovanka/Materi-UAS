@@ -23,6 +23,7 @@ char tombol;
 int indeks = 0;
 
 string CetakGaris(int banyak);
+void DataFile();
 char GetOption();
 void Config();
 int Total(int harga, int jumlah, int diskon);
@@ -31,6 +32,7 @@ void CetakStruk();
 void InputBelanja();
 
 int main() {
+	DataFile();
 	Menu:
 	char pilihan = GetOption();
 	switch(pilihan) {
@@ -63,6 +65,10 @@ string CetakGaris(int banyak) {
 	}
 	return garis;
 }
+
+void DataFile() {
+	
+	
 
 char GetOption() {
 	system("cls");
