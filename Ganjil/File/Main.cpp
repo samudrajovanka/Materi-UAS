@@ -67,6 +67,20 @@ string CetakGaris(int banyak) {
 }
 
 void DataFile() {
+    ofstream file("data.txt");
+    file << "P01\t" << "10000\t" << "Pulpen\t" << "10\t" << "10\n";
+    file << "P02\t" << "3000\t" << "Pensil\t" << "5\t" << "5\n";
+    file << "P03\t" << "2000\t" << "Penghapus\t" << "10\t" << "10\n";
+    file << "P04\t" << "5000\t" << "Penggaris\t" << "10\t" << "5\n";
+    file << "P05\t" << "6000\t" << "Rautan\t" << "0\t" << "0\n";
+    file.close();
+    
+
+
+
+}
+
+
 	
 	
 
