@@ -81,7 +81,7 @@ float RataTugas(float tugas1, float tugas2, float tugas3) {
 }
 
 float NilaiAkhir(int absen, float rataTugas, float uts, float uas) {
-	return ((absen*10/100)+(rataTugas*20/100)+(uts*30/100)+(uas*40/100));
+	return (((absen/14)10)+(rataTugas*20/100)+(uts*30/100)+(uas*40/100));
 }
 
 char KonversiHuruf(float nilaiAkhir) {
